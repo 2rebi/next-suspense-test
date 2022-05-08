@@ -6,6 +6,7 @@ import styles from '../../styles/Home.module.css'
 import {dehydrate, QueryClient} from "react-query";
 import {fetchHello} from "../libs/api";
 import dynamic from "next/dynamic";
+import NextSuspense from "../components/NextSuspense";
 
 const Profile = dynamic(() => import("../components/profile"), {
   ssr: false,
@@ -24,9 +25,9 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <Suspense fallback={<h2>Loading</h2>}>
+        <NextSuspense fallback={<h2>Loading</h2>}>
           <Profile />
-        </Suspense>
+        </NextSuspense>
 
         <p className={styles.description}>
           Get started by editing{' '}
